@@ -1,0 +1,26 @@
+﻿@page "/"
+@using ClientApp.Shared
+@inject HttpClient Http
+
+
+@using Syncfusion.EJ2.Blazor.Grids
+
+Grid With Default Data
+
+<EjsGrid DataSource="@forecasts">
+    <GridColumns>
+        <GridColumn Field=@nameof(WeatherForecast.TemperatureF) HeaderText="TemperatureF" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.TemperatureC) HeaderText="TemperatureC" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.Date) HeaderText=" Order Date" Format="yMd" Type="ColumnType.Date" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.Summary) HeaderText="Summary" Width="120"></GridColumn>
+    </GridColumns>
+</EjsGrid>
+
+@code{
+    WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetJsonAsync<WeatherForecast[]>("WeatherForecast");
+    }
+}
