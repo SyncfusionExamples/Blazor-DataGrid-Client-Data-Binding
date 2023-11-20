@@ -1,0 +1,24 @@
+﻿@page "/"
+@using ClientDataBinding.Shared
+@inject HttpClient Http
+
+
+Grid With Default Data
+
+<SfGrid DataSource="@forecasts">
+    <GridColumns>
+        <GridColumn Field=@nameof(WeatherForecast.TemperatureF) HeaderText="TemperatureF" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.TemperatureC) HeaderText="TemperatureC" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.Date) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(WeatherForecast.Summary) HeaderText="Summary" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+    }
+}
