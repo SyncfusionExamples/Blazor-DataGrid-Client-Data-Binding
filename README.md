@@ -33,6 +33,6 @@ dotnet build
 
 ## References
 
-**Documentation**: https://sfblazor.azurewebsites.net/staging/documentation/datagrid/data-binding/remote-data
+**Documentation**: https://blazor.syncfusion.com/documentation/datagrid/data-binding/remote-data
 
 **Online example**: https://blazor.syncfusion.com/demos/datagrid/remote-data?theme=bootstrap5
